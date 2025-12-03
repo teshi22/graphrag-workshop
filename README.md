@@ -6,19 +6,62 @@
 2. `2.prompt_tuning.ipynb`: 生成タスク向けのプロンプト調整や評価を段階的に試し、より良い応答を得る手順を学びます。
 3. `3.visualize.ipynb`: 作成済みインデックスを使い、GraphWidget などでエンティティ/リレーションを可視化し、検索 API で質問応答を実行します。
 
-## 実行コマンド
+## 事前準備（セットアップ手順）
 
+以下のコマンドを上から順番に実行して、ハンズオン用の環境を準備します。
+
+1. **レポジトリの取得と移動**
+
+```bash
+git clone https://github.com/teshi22/graphrag-workshop.git
+cd graphrag-workshop/
 ```
-$ git clone https://github.com/teshi22/graphrag-workshop.git
-$ cd graphrag-workshop/
-$ mkdir -p ./handson/input
-$ python -m venv .venv
-$ conda deactivate
-$ conda deactivate
-$ pip install -r requirements.txt
-$ source .venv/bin/activate
-($ python scripts/pdf2txt.py -i data/sample.pdf -o handson/input/sample.md)
-$ cp data/sample.md handson/input/sample.txt
-$ graphrag init --root ./handson
-$ ipython kernel install --user --name=graphrag-env
+
+2. **handson ディレクトリの作成**  
+   インデックス対象のテキストを配置するフォルダーを作ります。
+
+```bash
+mkdir -p ./handson/input
 ```
+
+3. **仮想環境の作成と依存ライブラリのインストール**
+
+```bash
+python -m venv .venv   # 仮想環境を作成
+conda deactivate       # conda をお使いの場合はいったん無効化
+conda deactivate       # 二重で有効になっている場合に備えて再度無効化
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+4. **サンプル PDF からテキストを作成（任意）**  
+   Azure Document Intelligence が利用できる環境の場合は、PDF から Markdown を生成して`handson/input`に配置します。
+
+```bash
+python scripts/pdf2txt.py -i data/sample.pdf -o handson/input/sample.md
+```
+
+Azure の利用が難しい場合は、リポジトリ同梱の`sample.md`をコピーして使っても構いません。
+
+```bash
+cp data/sample.md handson/input/sample.txt
+```
+
+5. **GraphRAG プロジェクトの初期化**  
+   `handson/`配下に GraphRAG の設定ファイルや出力ディレクトリが作成されます。
+
+```bash
+graphrag init --root ./handson
+```
+
+6. **Jupyter から使うカーネルの登録**  
+   ノートブックで`.venv`の Python を選べるようにします。
+
+```bash
+ipython kernel install --user --name=graphrag-env
+```
+
+## 参考ドキュメント
+
+- GraphRAG 公式サイト: https://microsoft.github.io/graphrag/
+- GraphRAG GitHub リポジトリ: https://github.com/microsoft/graphrag
