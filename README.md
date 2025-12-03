@@ -8,7 +8,7 @@
 
 ## 事前準備（セットアップ手順）
 
-以下のコマンドを上から順番に実行して、ハンズオン用の環境を準備します。
+以下の手順は、Azure Machine Learning のコンピューティングインスタンスから JupyterLab にアクセスし、**JupyterLab 内のターミナル**で実行することを想定しています。ターミナルを開いたら、次のコマンドを上から順番に実行してハンズオン用の環境を準備します。
 
 1. **レポジトリの取得と移動**
 
@@ -52,6 +52,22 @@ cp data/sample.md handson/input/sample.txt
 
 ```bash
 graphrag init --root ./handson
+```
+
+5-1. **settings.yaml のコピーとエンドポイントの設定**  
+ルートディレクトリにある`settings.yaml`を`handson/`配下にコピーし、自分の Azure OpenAI エンドポイントに書き換えます。
+
+```bash
+cp ./settings.yaml ./handson/settings.yaml
+```
+
+コピー後、`handson/settings.yaml`を開き、`llm:` → `api_base:` の値を **自分のエンドポイント URL**（例: `https://<your-resource-name>.openai.azure.com/`）に変更してください。
+
+5-2. **.env に自分の API キーを設定**  
+同じく`handson/`配下の`.env`ファイルに、自分の Azure OpenAI API キーを設定します。
+
+```env
+AZURE_OPENAI_API_KEY=あなたのAPIキー
 ```
 
 6. **Jupyter から使うカーネルの登録**  
