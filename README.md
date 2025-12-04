@@ -34,14 +34,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. **サンプル PDF からテキストを作成（任意）**  
-   Azure Document Intelligence が利用できる環境の場合は、PDF から Markdown を生成して`handson/input`に配置します。
-
-```bash
-python scripts/pdf2txt.py -i data/sample.pdf -o handson/input/sample.md
-```
-
-Azure の利用が難しい場合は、リポジトリ同梱の`sample.md`をコピーして使っても構いません。
+4. **サンプルデータの準備**  
+   Azure の利用が難しい場合は、リポジトリ同梱の`sample.md`をコピーして使っても構いません。
 
 ```bash
 cp data/sample.md handson/input/sample.txt
